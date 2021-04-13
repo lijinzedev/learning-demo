@@ -1,4 +1,4 @@
-package com.curiosity.controller;
+package com.curiosity.server;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;

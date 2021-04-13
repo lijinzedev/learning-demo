@@ -13,6 +13,9 @@
         <module>commons</module>
         <module>spring-security</module>
         <module>gateway</module>
+        <module>test</module>
+        <module>design-24</module>
+        <module>websocket</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -115,11 +118,11 @@
                 <version>${mybatis.spring.boot.version}</version>
                 <optional>true</optional>
             </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>log4j</groupId>-->
+<!--                <artifactId>log4j</artifactId>-->
+<!--                <version>${log4j.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>

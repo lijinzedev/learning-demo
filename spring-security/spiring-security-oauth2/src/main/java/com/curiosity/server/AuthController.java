@@ -1,4 +1,4 @@
-package com.curiosity.controller;
+package com.curiosity.server;
 
 
 import com.curiosity.domain.Oauth2TokenDto;
