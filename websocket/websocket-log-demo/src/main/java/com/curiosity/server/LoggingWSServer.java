@@ -56,7 +56,7 @@ public class LoggingWSServer {
                 BufferedReader reader = null;
                 try {
                     //日志文件路径，获取最新的
-                    String filePath = "/opt/logs/hxkf/resource/app.log";
+                    String filePath = "E:/learning-demo/logs/log_info.log";
 
                     //字符流
                     reader = new BufferedReader(new FileReader(filePath));

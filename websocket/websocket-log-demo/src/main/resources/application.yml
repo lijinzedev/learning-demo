@@ -1,5 +1,7 @@
 server:
   port: 8080
+  tomcat:
+    basedir: /temp
 spring:
   application:
     name: wslog
@@ -7,3 +9,7 @@ spring:
     cache: false
     enabled: true
     prefix: classpath:/templates/
+
+logging:
+  file:
+    path: ./logs
