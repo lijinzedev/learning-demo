@@ -12,4 +12,4 @@ spring:
 
 logging:
   file:
-    path: ./logs
+    path: ./logs/

@@ -2,6 +2,7 @@ package com.curiosity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author: Curiosity
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description:
  */
 @SpringBootApplication
+@EnableScheduling
 public class WebSocketApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebSocketApplication.class, args);
