@@ -7,13 +7,22 @@ package com.curiosity;
  * @Created by curiosity
  */
 
+import cn.hutool.core.collection.ListUtil;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * ip 白名单校验
@@ -262,10 +271,37 @@ public final class IpWhiteCheckUtil {
         System.out.println(IpWhiteCheckUtil.isPermited("192.168.4.1", ipWhilte));//true
         System.out.println(IpWhiteCheckUtil.isPermited("172.16.7.14", ipWhilte));//true
 
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime localDateTime = LocalDateTime.of(2020, 2, 12, 12, 12);
-        LocalDateTime localDateTime1 = localDateTime.plusMonths(3);
-        localDateTime1.isBefore(now);
+        List<Test> source = new ArrayList<Test>() {
+            {
+                add(new Test("111"));
+                add(new Test("222"));
+                add(new Test("333"));
+                add(new Test("444"));
+                add(new Test("555"));
+                add(new Test("666"));
+            }
+        };
+        Collections.shuffle(source);
+        System.out.println(source);
+        Collections.shuffle(source);
+        System.out.println(source);
+        Collections.shuffle(source);
+        System.out.println(source);
+
     }
 
+
+
+    public static <T> Collector<T, ?, Stream<T>> toShuffledStream() {
+        return Collectors.collectingAndThen(toList(), collected -> {
+            Collections.shuffle(collected);
+            return collected.stream();
+        });
+    }
+}
+
+@Data
+@AllArgsConstructor
+class Test {
+    private String test;
 }

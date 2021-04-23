@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Component
 @Slf4j
 public class LogScheduling {
-    @Scheduled(fixedDelay = 200)
+    @Scheduled(fixedDelay = 5000)
     public void test() {
         log.info("当前时间为{}", LocalDateTime.now());
     }

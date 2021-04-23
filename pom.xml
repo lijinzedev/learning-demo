@@ -12,10 +12,11 @@
         <module>canal</module>
         <module>commons</module>
         <module>spring-security</module>
-        <module>gateway</module>
         <module>test</module>
         <module>design-24</module>
         <module>websocket</module>
+        <module>mvc-test</module>
+        <module>springcloud</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

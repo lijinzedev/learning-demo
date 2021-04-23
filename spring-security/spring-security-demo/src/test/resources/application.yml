@@ -1,0 +1,3 @@
+BCrypt:
+  isslot: true   #用户密码是否加密  false
+  sloat: $2a$10$lfRS/L9g9Eh1PqyUnktK0u   #加密 盐
