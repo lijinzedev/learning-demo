@@ -11,10 +11,10 @@ server:
 # 4）  "test"下的具体一张表：test.blog   blog表
 # 5）  多个规则组合使用：test\\..*,test.sys_user,test.sys_role (逗号分隔)
 canal:
-  host: localhost
-  port: 11111
+  host: 172.16.7.100
+  port: 3306
   destination: demo
   username:
   password:
-  subscribe: test.blog
+  subscribe: .*
   batchSize: 1000
