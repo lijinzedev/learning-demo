@@ -1,0 +1,16 @@
+package rules;
+import com.curiosity.domain.Order
+rule "金额小于100"
+    when
+        $order:Order(originalPrice<100)
+    then
+        $order.setRealPrice($order.getOriginalPrice());
+        System.out.println("匹配金额小于100");
+end
+rule "金额大于100"
+    when
+        $order:Order(originalPrice>100)
+    then
+        $order.setRealPrice($order.getOriginalPrice());
+        System.out.println("匹配金额大于100");
+end

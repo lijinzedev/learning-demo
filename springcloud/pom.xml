@@ -13,6 +13,7 @@
         <module>app-gateway</module>
         <module>app-api</module>
         <module>app-modules</module>
+        <module>app-commons</module>
     </modules>
     <artifactId>springcloud</artifactId>
     <dependencies>
