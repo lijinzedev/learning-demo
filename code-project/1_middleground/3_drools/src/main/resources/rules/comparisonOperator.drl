@@ -1,9 +1,0 @@
-package rules1;
-import com.curiosity.domain.ComparisonOperatorEntity
-rule "comparisonOperator"
-    when
-        ComparisonOperatorEntity(names contains "张三")
-        ComparisonOperatorEntity(list contains "张三")
-    then
-        System.out.println("规则触发了");
-end

@@ -1,0 +1,100 @@
+package rules;
+import com.curiosity.domain.Calculation
+
+rule "计算应纳税所得额"
+    date-effective "2011-09-01"
+    salience 100
+    no-loop true
+    when
+        $cal:Calculation(wage>3500)
+    then
+        $cal.setWagemore($cal.getWage()-3500);
+        update($cal)
+end
+
+rule "计算税率小于1500"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(wagemore<=1500)
+    then
+        $cal.setCess(0.03);
+        $cal.setPreminus(0);
+        update($cal)
+end
+rule "计算税率1500-4500"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(1500<wagemore&&wagemore<=4500)
+    then
+        $cal.setCess(0.1);
+        $cal.setPreminus(105);
+        update($cal)
+end
+rule "计算税率小于4500-9000"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(4500<wagemore&&wagemore<=9000)
+    then
+        $cal.setCess(0.2);
+        $cal.setPreminus(555);
+        update($cal)
+end
+rule "计算税率9000-35000"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(9000<wagemore&&wagemore<=35000)
+    then
+        $cal.setCess(0.25);
+        $cal.setPreminus(1005);
+        update($cal)
+end
+rule "计算税率35000-55000"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(35000<wagemore&&wagemore<=55000)
+    then
+        $cal.setCess(0.3);
+        $cal.setPreminus(2755);
+        update($cal)
+end
+rule "计算税率55000-80000"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(55000<wagemore&&wagemore<=80000)
+    then
+        $cal.setCess(0.35);
+        $cal.setPreminus(5505);
+        update($cal)
+end
+rule "计算税率大于80000"
+    salience 99
+    activation-group "SETCess_Group"
+    when
+        $cal:Calculation(80000<wagemore)
+    then
+        $cal.setCess(0.45);
+        $cal.setPreminus(13505);
+        update($cal)
+end
+rule "计算工资"
+    salience 98
+    when
+        $cal : Calculation(wage > 0 && wagemore > 0 && wagemore > 0 && cess > 0)
+    then
+    // 扣税额=应纳税所得额*税率-速算扣除数
+        $cal.setWageminus($cal.getWagemore()*$cal.getCess()-$cal.getPreminus());
+    //  税后工资=税前工资-扣税额
+        $cal.setActualwage($cal.getWage()-$cal.getWageminus());
+        System.out.println("-----税前工资："+$cal.getWage());
+        System.out.println("-----应纳税所得额："+$cal.getWagemore());
+        System.out.println("-----税率：" + $cal.getCess());
+        System.out.println("-----速算扣除数：" + $cal.getPreminus());
+        System.out.println("-----扣税额：" + $cal.getWageminus());
+        System.out.println("-----税后工资：" + $cal.getActualwage());
+end
