@@ -1,0 +1,50 @@
+# mysql 个性化配置， 不同的环境，需要配置不同的链接信息，只需要将这段信息复制
+# 到具体环境的配置文件中进行修改即可
+server:
+  port: 8000
+  tomcat:
+    basedir: /appdoc/tmp
+spring:
+  servlet:
+    multipart:
+      max-file-size: 512MB      # Max file size，默认1M
+      max-request-size: 512MB   # Max request size，默认10M
+  application:
+    name: file-server
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.16.7.100:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+mybatis-plus:
+  type-aliases-package: com.curiosity.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*Mapper.xml
+dozer:
+  mappingFiles:
+    - classpath:dozer/global.dozer.xml
+    - classpath:dozer/biz.dozer.xml
+id-generator:
+  machine-code: 1  # id生成器机器掩码
+file:
+  mysql:
+    database: pd_files
+  nginx:
+    ip: 127.0.0.1   # 正式环境需要将该ip设置成nginx对应的 公网ip
+    port: 10000                             # 正式环境需要将该ip设置成nginx对应的 公网端口
+  swagger:
+    enabled: true
+    docket:
+      file:
+        title: 文件服务
+        base-package: com.curiosity.controller
+  file:
+    type: LOCAL # LOCAL ALI MINIO FAST_DFS
+    uriPrefix: http://172.17.0.115:8188/ #存储类型为FAST_DFS时使用
+    local:
+      uriPrefix: http://${file.file.ip}:${file.nginx.port}
+      bucket-name: oss-file-service
+      endpoint: D:\uploadFiles

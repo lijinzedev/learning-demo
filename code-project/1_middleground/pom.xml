@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>3_drools</module>
+        <module>4_file</module>
     </modules>
 
     <properties>
