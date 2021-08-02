@@ -25,6 +25,6 @@ public interface FileStrategy {
      * @param list
      * @return
      */
-    public File delete(List<FileDeleteDO> list);
+    public boolean delete(List<FileDeleteDO> list);
 
 }
