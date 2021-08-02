@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("user1")
+@TableName("father")
 public class Father {
     @TableId(value = "id", type = IdType.NONE)
     private Integer id;

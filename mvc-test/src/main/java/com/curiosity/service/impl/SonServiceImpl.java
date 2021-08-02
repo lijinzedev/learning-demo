@@ -1,7 +1,7 @@
 package com.curiosity.service.impl;
 
 import com.curiosity.base.BaseServiceImpl;
-import com.curiosity.dao.User2Mapper;
+import com.curiosity.dao.SonMapper;
 import com.curiosity.model.model.Son;
 import com.curiosity.service.Handler;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @RequiredArgsConstructor
-public class SonServiceImpl extends BaseServiceImpl<User2Mapper, Son> implements Handler<Son> {
+public class SonServiceImpl extends BaseServiceImpl<SonMapper, Son> implements Handler<Son> {
 
 
     @Override

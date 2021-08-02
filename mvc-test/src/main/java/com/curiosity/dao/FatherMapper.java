@@ -9,5 +9,5 @@ import com.curiosity.model.model.Father;
  * @Date 2021/8/2 14:13
  * @Created by lijinze
  */
-public interface User1Mapper extends BaseMapper<Father> {
+public interface FatherMapper extends BaseMapper<Father> {
 }

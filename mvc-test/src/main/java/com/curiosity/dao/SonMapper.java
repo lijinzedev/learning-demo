@@ -9,6 +9,6 @@ import com.curiosity.model.model.Son;
  * @Date 2021/8/2 14:14
  * @Created by lijinze
  */
-public interface User2Mapper extends BaseMapper<Son> {
+public interface SonMapper extends BaseMapper<Son> {
 
 }

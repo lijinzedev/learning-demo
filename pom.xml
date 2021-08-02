@@ -17,6 +17,7 @@
         <module>mvc-test</module>
         <module>springcloud</module>
         <module>code-project</module>
+        <module>mq</module>
     </modules>
 
     <properties>
