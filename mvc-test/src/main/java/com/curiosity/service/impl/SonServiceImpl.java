@@ -32,4 +32,39 @@ public class SonServiceImpl extends BaseServiceImpl<SonMapper, Son> implements H
         baseMapper.insert(user);
         throw new RuntimeException();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void addRequiredNew(Son user) {
+        baseMapper.insert(user);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void addRequiredNewAndThrowException(Son user) {
+        baseMapper.insert(user);
+        throw new RuntimeException();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NESTED)
+    public void addNested(Son user) {
+        baseMapper.insert(user);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NESTED)
+    public void addNestedException(Son user) {
+        baseMapper.insert(user);
+        throw new RuntimeException();
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void addNotSupport() {
+        final Son user1 = new Son();
+        user1.setId(1);
+        user1.setName("tom son ");
+        baseMapper.insert(user1);
+        throw new RuntimeException();
+    }
 }

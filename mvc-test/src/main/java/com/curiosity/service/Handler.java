@@ -14,4 +14,10 @@ public interface Handler<T>  {
     public void add(T user);
 
     public void addAndThrowException(T user);
+
+    public void addRequiredNew(T user);
+
+    public void addRequiredNewAndThrowException(T user);
+    public void addNested(T user);
+    public void addNestedException(T user);
 }

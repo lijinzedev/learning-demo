@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class TestService {
+public class TestServiceRequired {
     @Resource(name = "fatherServiceImpl")
     private FatherServiceImpl fatherServiceImpl;
     @Resource(name = "sonServiceImpl")
@@ -31,7 +31,7 @@ public class TestService {
      * @param father
      * @param son
      */
-    public void testNotTransaction(Father father, Son son) {
+    public void testWithoutTransaction(Father father, Son son) {
         fatherServiceImpl.add(father);
         sonServiceImpl.addAndThrowException(son);
     }
@@ -42,7 +42,7 @@ public class TestService {
      * @param son
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void testHaveTransaction(Father father, Son son) {
+    public void testWithTransaction(Father father, Son son) {
         fatherServiceImpl.add(father);
         sonServiceImpl.addAndThrowException(son);
     }
@@ -54,7 +54,7 @@ public class TestService {
      * @param son
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void testHaveTransactionAndThrow(Father father, Son son) {
+    public void testWithTransactionAndThrow(Father father, Son son) {
         fatherServiceImpl.add(father);
         sonServiceImpl.add(son);
         throw new RuntimeException();
@@ -66,7 +66,7 @@ public class TestService {
      * @param son
      */
     @Transactional(propagation = Propagation.REQUIRED)
-    public void testHaveTransactionAndTry(Father father, Son son) {
+    public void testWithTransactionAndTry(Father father, Son son) {
         fatherServiceImpl.add(father);
         try {
             sonServiceImpl.addAndThrowException(son);
