@@ -1,0 +1,14 @@
+mqtt:
+  client:
+    username: admin1
+    password: public1
+    serverURI: tcp://192.168.200.128:1883
+    clientId: mqtt.client.${random.int[1000,9999]}
+    keepAliveInterval: 10
+    connectionTimeout: 30
+  producer:
+    defaultQos: 2
+    defaultRetained: false
+    defaultTopic: topic/test1
+  consumer:
+    consumerTopics: $share/vms/server/#,$queue/server/task/completed,$share/vms/vm/#
